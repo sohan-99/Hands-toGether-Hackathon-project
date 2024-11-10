@@ -79,13 +79,14 @@
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
                 <div class="d-none d-lg-flex ms-2">
-                    <a class="btn btn-outline-primary py-2 px-3" href="">
-                        Donate Now
-                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                            <i class="fa fa-arrow-right"></i>
-                        </div>
-                    </a>
+                  <a class="btn btn-outline-primary py-2 px-3" href="donate.html">
+                    Donate Now
+                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                      <i class="fa fa-arrow-right"></i>
+                    </div>
+                  </a>
                 </div>
+                
             </div>
         </nav>
     </div>
@@ -349,148 +350,300 @@
     <!-- Service End -->
 
 
-    <!-- Donate Start -->
-    <div class="container-fluid donate my-5 py-5" data-parallax="scroll" data-image-src="img/carousel-2.jpg">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
+        <!-- Donate Start -->
+        <div class="d-flex justify-content-center align-items-center min-vh-100">
+            <div class="container py-5">
+              <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Donate Now</div>
-                    <h1 class="display-6 text-white mb-5">Thanks For The Results Achieved With You</h1>
-                    <p class="text-white-50 mb-0">Time was filled with challenges and moments of struggle. Pain was ever-present, yet there was beauty in simplicity. Moments of clarity came alongside hardship, with truth and patience bringing comfort amidst the difficulties.</p>
+                  <div
+                    class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3"
+                  >
+                    Donate Now
+                  </div>
+                  <h1 class="display-6 mb-5">
+                    Thanks For The Results Achieved With You
+                  </h1>
+                  <p class="mb-0">
+                    Time was filled with sorrow and hardship. Pain repeated, heavy and
+                    unchanging. Joined by struggle and weariness. Sorrows came one
+                    after another, just as great joy was distant and fleeting.
+                  </p>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="h-100 bg-white p-5">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control bg-light border-0" id="name" placeholder="Your Name">
-                                        <label for="name">Your Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control bg-light border-0" id="email" placeholder="Your Email">
-                                        <label for="email">Your Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="btn-group d-flex justify-content-around">
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked>
-                                        <label class="btn btn-light py-3" for="btnradio1">$10</label>
-
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2">
-                                        <label class="btn btn-light py-3" for="btnradio2">$20</label>
-
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3">
-                                        <label class="btn btn-light py-3" for="btnradio3">$30</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary px-5" style="height: 60px;">
-                                        Donate Now
-                                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                            <i class="fa fa-arrow-right"></i>
-                                        </div>
-                                    </button>
-                                </div>
+                  <div class="h-100 bg-secondary p-5">
+                    <form id="donationForm">
+                      <div class="row g-3">
+                        <div class="col-12">
+                          <div class="form-floating">
+                            <input
+                              type="text"
+                              class="form-control bg-light border-0"
+                              id="name"
+                              placeholder="Your Name"
+                            />
+                            <label for="name">Your Name</label>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="form-floating">
+                            <input
+                              type="email"
+                              class="form-control bg-light border-0"
+                              id="email"
+                              placeholder="Your Email"
+                            />
+                            <label for="email">Your Email</label>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="form-floating">
+                            <input
+                              type="number"
+                              class="form-control bg-light border-0"
+                              id="donate"
+                              placeholder="Your Donation Amount"
+                            />
+                            <label for="donate">Your Donation Amount</label>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <button
+                            type="button"
+                            class="btn btn-primary px-5"
+                            style="height: 60px"
+                            onclick="collectData()"
+                          >
+                            Donate Now
+                            <div
+                              class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2"
+                            >
+                              <i class="fa fa-arrow-right"></i>
                             </div>
-                        </form>
-                    </div>
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+          <!-- Donate End -->
+          <!-- donation funtionallty start -->
+          <style>
+            .min-vh-100 {
+              min-height: 100vh;
+            }
+          </style>
+      
+          <script>
+            // data get from frontend
+            async function collectData() {
+              const name = document.getElementById("name").value;
+              const email = document.getElementById("email").value;
+              const donationAmount = document.getElementById("donate").value;
+              // post api use to data send to database
+              try {
+                const response = await fetch("http://localhost:5000/donate", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    name,
+                    email,
+                    donationAmount: Number(donationAmount),
+                  }),
+                });
+                if (response.ok) {
+                  alert("Donation saved successfully");
+                  fetchDonations();
+                  document.getElementById("donationForm").reset(); // Refresh donations after submission
+                } else {
+                  alert("Failed to save donation");
+                }
+              } catch (error) {
+                console.error("Error:", error);
+              }
+            }
+            // get api use for showing donation in frontend
+            async function fetchDonations() {
+              try {
+                const response = await fetch("http://localhost:5000/api/donations");
+                const donations = await response.json();
+      
+                // Display individual donations
+                const donationsList = document.getElementById("donations-list");
+                donationsList.innerHTML = donations
+                  .map(
+                    (d) => `
+                          <li>${d.name} - ${d.email} - $${d.donationAmount}</li>
+                      `
+                  )
+                  .join("");
+      
+                // Calculate and display the total donation amount
+                const totalDonation = donations.reduce(
+                  (sum, d) => sum + d.donationAmount,
+                  0
+                );
+                document.getElementById(
+                  "total-donation"
+                ).textContent = `Total Donation Collected: $${totalDonation}`;
+              } catch (error) {
+                console.error("Error fetching donations:", error);
+              }
+            }
+            // Fetch donations when page loads
+            window.onload = fetchDonations;
+          </script>
+          <!-- shwing get data for database -->
+          <div class="mx-auto center-container">
+            <div
+              id="total-donation"
+              style="font-weight: bold; margin-top: 20px"
+            ></div>
+            <div id="donations-list"></div>
+          </div>
+      
+          <!-- donation funtionallty start -->
+
+
+   <!-- Team Start -->
+   <div class="container-xxl py-5">
+    <div class="container">
+      <div
+        class="text-center mx-auto mb-5 wow fadeInUp"
+        data-wow-delay="0.1s"
+        style="max-width: 500px"
+      >
+        <div
+          class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3"
+        >
+          Team Members
         </div>
-    </div>
-    <!-- Donate End -->
-
-
-    <!-- Team Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Team Members</div>
-                <h1 class="display-6 mb-5">Let's Meet With Our Ordinary Soldiers</h1>
+        <h1 class="display-6 mb-5">Let's Meet With Our Ordinary Soldiers</h1>
+      </div>
+      <div class="row g-4">
+        <!-- sohan -->
+        <div class="col-lg-2 col-md-4 wow fadeInUp" data-wow-delay="0.5s">
+          <div class="team-item position-relative rounded overflow-hidden">
+            <div class="overflow-hidden">
+              <img class="img-fluid" src="img/sohan.jpg" alt="" />
             </div>
-            <div class="row g-4">
-                <div class="col-lg-2 col-md-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team1.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Md Sohanur</h5>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team3.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Md Sakib</h5>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team1.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Md Sohanur</h5>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team3.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Md sakib</h5>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 wow fadeInUp" data-wow-delay="0.9s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team1.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Md Sohanur</h5>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="team-text bg-light text-center p-4">
+              <h5>Sohan</h5>
+              <p class="text-primary">Team Leader</p>
+              <div class="team-social text-center">
+                <a class="btn btn-square" href=""
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a class="btn btn-square" href=""
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a class="btn btn-square" href=""
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
             </div>
+          </div>
         </div>
+        <!-- sakib -->
+        <div class="col-lg-2 col-md-4 wow fadeInUp" data-wow-delay="0.7s">
+          <div class="team-item position-relative rounded overflow-hidden">
+            <div class="overflow-hidden">
+              <img class="img-fluid" src="img/sakib.JPG" alt="" />
+            </div>
+            <div class="team-text bg-light text-center p-4">
+              <h5>Md Sakib</h5>
+              <h5>Researcher</h5>
+              <div class="team-social text-center">
+                <a class="btn btn-square" href=""
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a class="btn btn-square" href=""
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a class="btn btn-square" href=""
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- joty -->
+        <div class="col-lg-2 col-md-4 wow fadeInUp" data-wow-delay="0.9s">
+          <div class="team-item position-relative rounded overflow-hidden">
+            <div class="overflow-hidden">
+              <img class="img-fluid" src="img/joty.JPG" alt="" />
+            </div>
+            <div class="team-text bg-light text-center p-4">
+              <h5>Joty</h5>
+              <h5>Script Writter</h5>
+              <p class="text-primary"></p>
+              <div class="team-social text-center">
+                <a class="btn btn-square" href=""
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a class="btn btn-square" href=""
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a class="btn btn-square" href=""
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+                  <!-- soib -->
+                  <div class="col-lg-2 col-md-4 wow fadeInUp" data-wow-delay="0.3s">
+                      <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                          <img class="img-fluid" src="img/shoib.JPG" alt="" />
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                          <h5>Shoaib</h5>
+                          <h5>Frontend Developer</h5>
+                          <div class="team-social text-center">
+                            <a class="btn btn-square" href=""
+                              ><i class="fab fa-facebook-f"></i
+                            ></a>
+                            <a class="btn btn-square" href=""
+                              ><i class="fab fa-twitter"></i
+                            ></a>
+                            <a class="btn btn-square" href=""
+                              ><i class="fab fa-instagram"></i
+                            ></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+        <!-- zisan -->
+        <div class="col-lg-2 col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="team-item position-relative rounded overflow-hidden">
+            <div class="overflow-hidden">
+              <img class="img-fluid" src="img/zisan.JPG" alt="" />
+            </div>
+            <div class="team-text bg-light text-center p-4">
+              <h5>Zisan</h5>
+              <h5>Backend Developer</h5>
+              <div class="team-social text-center">
+                <a class="btn btn-square" href=""
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a class="btn btn-square" href=""
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a class="btn btn-square" href=""
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <!-- Team End -->
+  </div>
+  <!-- Team End -->
     
     <!-- Team End -->
 

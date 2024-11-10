@@ -121,15 +121,14 @@
             <a href="contact.html" class="nav-item nav-link">Contact</a>
           </div>
           <div class="d-none d-lg-flex ms-2">
-            <a class="btn btn-outline-primary py-2 px-3" href="">
+            <a class="btn btn-outline-primary py-2 px-3" href="donate.html">
               Donate Now
-              <div
-                class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2"
-              >
+              <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                 <i class="fa fa-arrow-right"></i>
               </div>
             </a>
           </div>
+          
         </div>
       </nav>
     </div>
@@ -160,8 +159,8 @@
     <!-- Page Header End -->
 
     <!-- Donate Start -->
-    <div class="container-fluid py-5">
-      <div class="container">
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
+      <div class="container py-5">
         <div class="row g-5 align-items-center">
           <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
             <div
@@ -237,13 +236,21 @@
         </div>
       </div>
     </div>
+    <!-- Donate End -->
+    <!-- donation funtionallty start -->
+    <style>
+      .min-vh-100 {
+        min-height: 100vh;
+      }
+    </style>
 
     <script>
+      // data get from frontend
       async function collectData() {
         const name = document.getElementById("name").value;
         const email = document.getElementById("email").value;
         const donationAmount = document.getElementById("donate").value;
-
+        // post api use to data send to database
         try {
           const response = await fetch("http://localhost:5000/donate", {
             method: "POST",
@@ -256,7 +263,8 @@
           });
           if (response.ok) {
             alert("Donation saved successfully");
-            fetchDonations(); // Refresh donations after submission
+            fetchDonations();
+            document.getElementById("donationForm").reset(); // Refresh donations after submission
           } else {
             alert("Failed to save donation");
           }
@@ -264,7 +272,7 @@
           console.error("Error:", error);
         }
       }
-
+      // get api use for showing donation in frontend
       async function fetchDonations() {
         try {
           const response = await fetch("http://localhost:5000/api/donations");
@@ -292,15 +300,19 @@
           console.error("Error fetching donations:", error);
         }
       }
-
       // Fetch donations when page loads
       window.onload = fetchDonations;
     </script>
+    <!-- shwing get data for database -->
+    <div class="mx-auto center-container">
+      <div
+        id="total-donation"
+        style="font-weight: bold; margin-top: 20px"
+      ></div>
+      <div id="donations-list"></div>
+    </div>
 
-    <div id="total-donation" style="font-weight: bold; margin-top: 20px"></div>
-    <div id="donations-list"></div>
-
-    <!-- Donate End -->
+    <!-- donation funtionallty start -->
 
     <!-- Footer Start -->
     <div

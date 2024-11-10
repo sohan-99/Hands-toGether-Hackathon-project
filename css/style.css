@@ -506,3 +506,15 @@
 .footer .copyright a:hover {
     color: var(--primary);
 }
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center elements horizontally */
+  }
+  
+  #total-donation, #donations-list {
+    width: 100%; /* Optional: Adjusts width if needed */
+    text-align: center; /* Centers content within each div */
+  }
+  
